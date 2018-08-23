@@ -51,4 +51,23 @@ class Anggota extends \yii\db\ActiveRecord
             'status_aktif' => 'Status Aktif',
         ];
     }
+
+     public function getManyBuku() {
+       return $this->hasMany(Buku::class, ['Anggota' => 'id']);
+   }
+
+    public function getGrafikList()
+    {
+        $data = [];
+        foreach (static::find()->all() as $anggota) {
+           $data[] = [$anggota->nama, (int) $anggota->getManyBuku()->count()];
+        }
+        return $data;
+    }
+
+
+    public function getCount()
+    {
+       return static::find()->count();
+    }
 }

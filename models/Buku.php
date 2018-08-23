@@ -63,37 +63,51 @@ class Buku extends \yii\db\ActiveRecord
 
     public function getPenulis()
     {
-         $model = Penulis::findOne($this->id_penulis);
+        //  $model = Penulis::findOne($this->id_penulis);
 
-        if ($model !== null) {
-            return $model->nama;
-        } else {
-            return null;
-        }
-        // return $this->hasOne(Penulis::classname(),['id' => 'id_penulis']);
+        // if ($model !== null) {
+        //     return $model->nama;
+        // } else {
+        //     return null;
+        // }
+        return $this->hasOne(Penulis::classname(),['id' => 'id_penulis']);
     }
 
     public function getPenerbit()
     {
-        $model = Penerbit::findOne($this->id_penerbit);
+        // $model = Penerbit::findOne($this->id_penerbit);
 
-        if ($model !== null) {
-            return $model->nama;
-        } else {
-            return null;
-        }
-        // return $this->hasOne(Penerbit::classname(),['id' => 'id_penerbit']);
+        // if ($model !== null) {
+        //     return $model->nama;
+        // } else {
+        //     return null;
+        // }
+         return $this->hasOne(Penerbit::classname(),['id' => 'id_penerbit']);
     }
 
     public function getKategori()
     {
-        $model = Kategori::findOne($this->id_kategori);
+        // $model = Kategori::findOne($this->id_kategori);
 
-        if ($model !== null) {
-            return $model->nama;
-        } else {
-            return null;
-        }
-        // return $this->hasOne(Kategori::classname(),['id' => 'id_kategori']);
+        // if ($model !== null) {
+        //     return $model->nama;
+        // } else {
+        //     return null;
+        // }
+         return $this->hasOne(Kategori::classname(),['id' => 'id_kategori']);
+    }
+
+   public function getGrafikListBuku()
+   {
+       static $bukuList = ['nama' => 'nama', 'id_kategori' => 'Kategori', 'id_penulis' => 'penulis', 'id_penerbit' => 'penerbit'];
+       $data = [];
+       foreach ($bukuList as $key => $buku) {
+           $data[] = [$buku, (int) static::find()->sum($key)];
+       }
+       return $data;
+   }
+    public function getCount()
+    {
+       return static::find()->count();
     }
 }

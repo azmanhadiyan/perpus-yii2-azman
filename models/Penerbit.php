@@ -53,4 +53,8 @@ class Penerbit extends \yii\db\ActiveRecord
     {
         return \yii\helpers\ArrayHelper::map(self::find()->all(), 'id','nama');
     }
+     public function getCount()
+    {
+       return static::find()->count();
+    }
 }
