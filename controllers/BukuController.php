@@ -193,6 +193,8 @@ class BukuController extends Controller
         $sheet->setCellValue('D1', 'Tahun Terbit');
         $sheet->setCellValue('E1', 'Penulis');
         $sheet->setCellValue('F1', 'Penerbit');
+        $sheet->setCellValue('F1', 'Kategori');
+
         $semuaBuku = Buku::find()->all();
         $nomor     = 1;
         $row1      = 2;
@@ -201,6 +203,7 @@ class BukuController extends Controller
         $row4      = $row3;
         $row5      = $row4;
         $row6      = $row5;
+        $row7      = $row6;
 
         foreach ($semuaBuku as $buku) {
            $sheet->setCellValue('A' . $row1++, $nomor++);
@@ -209,6 +212,8 @@ class BukuController extends Controller
            $sheet->setCellValue('D' . $row4++, $buku->tahun_terbit);
            $sheet->setCellValue('E' . $row5++, $buku->id_penulis);
            $sheet->setCellValue('F' . $row6++, $buku->id_penerbit);
+           $sheet->setCellValue('F' . $row7++, $buku->id_kategori);
+           
 
        }
 
@@ -223,16 +228,16 @@ class BukuController extends Controller
        return $this->redirect($path);
    }
 
-   public function actionExportMpdf() {
-       $mpdf     = new \Mpdf\Mpdf();
-       $filename = time() . '_Mpdf.pdf';
-       $path     = 'exports/' . $filename; // Lokasi penyimpanan File
+   // public function actionExportMpdf() {
+   //     $mpdf     = new \Mpdf\Mpdf();
+   //     $filename = time() . '_Mpdf.pdf';
+   //     $path     = 'exports/' . $filename; // Lokasi penyimpanan File
 
-       $mpdf->WriteHTML('<h1>Hello world!</h1>');
+   //     $mpdf->WriteHTML('<h1>Hello world!</h1>');
 
-       $mpdf->Output($path);
-       return $this->redirect($path); // Redirect menuju halaman buku/index.
-   }
+   //     $mpdf->Output($path);
+   //     return $this->redirect($path); // Redirect menuju halaman buku/index.
+   // }
 
 
    // public function actionExportMpdf() {

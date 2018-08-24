@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Buku', ['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Export to Excel', ['buku/export-excel'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('Export to PDF', ['buku/export-mpdf'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Export to PDF', ['site/export-mpdf'], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Export to Word', ['buku/export-word'], ['class' => 'btn btn-success']) ?>
     </p>
 

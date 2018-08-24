@@ -100,7 +100,7 @@
       <td><?= $data->penerbit->nama ?></td>
       <td><?= $data->kategori->nama ?></td>
       <td><?= $data->penulis->nama ?></td>
-      <td><img src="<?= Yii::$app->request->baseUrl.'/upload/sampul/'.$data->sampul?>" width="100px"></td>
+      <td><img src="<?= Yii::$app->request->baseUrl.'/sampul/'.$data->sampul?>" width="100px"></td>
      </tr>
      <?php $i++; } ?>
  </table>

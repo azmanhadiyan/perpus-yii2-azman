@@ -91,7 +91,7 @@ $this->title = 'Perpustakaan';
     </div>
 
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="x_panel">
                 <div class="x_title">
                     <h3 class="box-title">Buku Berdasarkan Penulis</h3>
@@ -113,6 +113,66 @@ $this->title = 'Perpustakaan';
                                 'type' => 'pie',
                                 'name' => 'Penulis',
                                 'data' => Penulis::getGrafikList(),
+                                ],
+                            ],
+                        ],
+                    ]);?>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-sm-4">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h3 class="box-title">Buku Berdasarkan Penerbit</h3>
+                </div>
+                <div class="box-body">
+                    <?=Highcharts::widget([
+                        'options' => [
+                            'credits'     => false,
+                            'title'       => ['text' => 'PENERBIT BUKU'],
+                            'exporting'   => ['enabled' => true],
+                            'plotOptions' => [
+                                'pie' => [
+                                    'cursor' => 'pointer',
+                                ],
+                            ],
+
+                            'series'      => [
+                                [
+                                'type' => 'pie',
+                                'name' => 'Penerbit',
+                                'data' => Penerbit::getGrafikList(),
+                                ],
+                            ],
+                        ],
+                    ]);?>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h3 class="box-title">Buku Berdasarkan Kategori</h3>
+                </div>
+                <div class="box-body">
+                    <?=Highcharts::widget([
+                        'options' => [
+                            'credits'     => false,
+                            'title'       => ['text' => 'KATEGORI BUKU'],
+                            'exporting'   => ['enabled' => true],
+                            'plotOptions' => [
+                                'pie' => [
+                                    'cursor' => 'pointer',
+                                ],
+                            ],
+
+                            'series'      => [
+                                [
+                                'type' => 'pie',
+                                'name' => 'Kategori',
+                                'data' => Kategori::getGrafikList(),
                                 ],
                             ],
                         ],

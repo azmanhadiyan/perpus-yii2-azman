@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use Mpdf\Mpdf;
+use app\models\Buku;
 
 class SiteController extends Controller
 {
@@ -137,14 +138,16 @@ class SiteController extends Controller
         return $this->render('dashboard');
     }
 
-   //  public function actionExportPdf() 
-   // {
-   //       $this->layout='main1';
-   //       $model = Buku::find()->All();
-   //       $mpdf=new mPDF();
-   //       $mpdf->WriteHTML($this->renderPartial('template',['model'=>$model]));
-   //       $mpdf->Output('Buku.pdf', 'D');
-   //       exit;
-   // }
+    public function actionExportMpdf() 
+   {
+         $this->layout='main1';
+         $model = Buku::find()->all();
+         $mpdf=new mPDF();
+         $filename = time().'_buku.pdf';
+         $path = 'exports/' .$filename;
+         $mpdf->WriteHTML($this->renderPartial('template',['model'=>$model]));
+         $mpdf->Output($path);
+        return $this->redirect($path);
+   }
 
 }
